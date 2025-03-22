@@ -30,9 +30,15 @@ if (
 }
 
 // Exportar para Vercel serverless
-export default async function handler(req: any, res: any) {
-	const app = await createApp()
-	await app.init()
-	const server = app.getHttpServer() as (req: any, res: any) => void
-	return server(req, res)
+export default async (req, res) => {
+	try {
+		const app = await createApp()
+		await app.init()
+		const server = app.getHttpServer() as (req: any, res: any) => void
+		return server(req, res)
+	} catch (error) {
+		console.error('error handling request', error)
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+		res.status(500).send('Internal server error')
+	}
 }
