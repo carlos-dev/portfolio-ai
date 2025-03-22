@@ -1,4 +1,4 @@
-import { PrismaProvider } from 'src/db/prisma.provider';
+import { PrismaProvider } from '../db/prisma.provider';
 export declare class ProjectProvider {
     private readonly prisma;
     constructor(prisma: PrismaProvider);

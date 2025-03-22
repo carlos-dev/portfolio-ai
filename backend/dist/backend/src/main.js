@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = handler;
 const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
 let app;
@@ -23,10 +22,16 @@ if (process.env.NODE_ENV !== 'production' ||
     process.env.VERCEL_ENV !== 'production') {
     void bootstrap();
 }
-async function handler(req, res) {
-    const app = await createApp();
-    await app.init();
-    const server = app.getHttpServer();
-    return server(req, res);
-}
+exports.default = async (req, res) => {
+    try {
+        const app = await createApp();
+        await app.init();
+        const server = app.getHttpServer();
+        return server(req, res);
+    }
+    catch (error) {
+        console.error('error handling request', error);
+        res.status(500).send('Internal server error');
+    }
+};
 //# sourceMappingURL=main.js.map
