@@ -1,0 +1,9 @@
+export default class Id {
+	static generate(): string {
+		const split1 = Math.random().toString(36).substr(2, 9)
+		const split2 = Math.random().toString(36).substr(2, 9)
+		const split3 = Math.random().toString(36).substr(2, 9)
+
+		return `${split1}-${split2}-${split3}`
+	}
+}

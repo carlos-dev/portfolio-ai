@@ -1,0 +1,7 @@
+POST https://primary-production-9609.up.railway.app/webhook/personal-assistant
+Content-Type: application/json
+
+{
+  "chatId": "12345678",
+  "message": "Oi Carlos, você trabalha com desenvolvimento para mobile?"
+}
