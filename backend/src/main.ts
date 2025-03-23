@@ -34,8 +34,14 @@ export default async (req, res) => {
 	try {
 		const app = await createApp()
 		await app.init()
-		const server = app.getHttpServer() as (req: any, res: any) => void
-		return server(req, res)
+
+		// Get the HTTP adapter instead of the server
+		const httpAdapter = app.getHttpAdapter()
+		// Use the HTTP adapter to handle the request
+		const instance = httpAdapter.getInstance() as {
+			handle: (req: any, res: any) => void
+		}
+		return instance.handle(req, res)
 	} catch (error) {
 		console.error('error handling request', error)
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access

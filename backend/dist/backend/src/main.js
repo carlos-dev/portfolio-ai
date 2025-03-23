@@ -26,8 +26,9 @@ exports.default = async (req, res) => {
     try {
         const app = await createApp();
         await app.init();
-        const server = app.getHttpServer();
-        return server(req, res);
+        const httpAdapter = app.getHttpAdapter();
+        const instance = httpAdapter.getInstance();
+        return instance.handle(req, res);
     }
     catch (error) {
         console.error('error handling request', error);
