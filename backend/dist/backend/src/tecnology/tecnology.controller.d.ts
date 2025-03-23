@@ -7,8 +7,8 @@ export declare class TechnologyController {
         id: number;
         name: string;
         description: string;
-        highlight: boolean;
         image: string;
+        highlight: boolean;
         projectId: number | null;
     }[]>;
     getHighLightedTechnologies(): Promise<Technology[]>;

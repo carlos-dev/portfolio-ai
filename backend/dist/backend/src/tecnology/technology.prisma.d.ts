@@ -1,4 +1,4 @@
-import { PrismaProvider } from 'src/db/prisma.provider';
+import { PrismaProvider } from '../db/prisma.provider';
 export declare class TechnologyPrisma {
     private readonly prisma;
     constructor(prisma: PrismaProvider);
@@ -6,16 +6,16 @@ export declare class TechnologyPrisma {
         id: number;
         name: string;
         description: string;
-        highlight: boolean;
         image: string;
+        highlight: boolean;
         projectId: number | null;
     }[]>;
     getHighLightedTechnologies(): Promise<{
         id: number;
         name: string;
         description: string;
-        highlight: boolean;
         image: string;
+        highlight: boolean;
         projectId: number | null;
     }[]>;
 }
